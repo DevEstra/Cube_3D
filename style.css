@@ -1,0 +1,71 @@
+/* Resetting default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+} 
+
+/* Setting up the body to center the cube and a black background */
+body {
+    display: flex;
+    justify-content: center;
+    background: #000000;
+} 
+
+/* The main cube container */
+.cube {
+    width: 150px; /* Cube width */
+    height: 150px; /* Cube height */
+    margin-top: 70%; /* Positioning the cube from the top */
+    position: relative; /* Positioning for child elements */
+    transform-style: preserve-3d; /* Enable 3D transformations for children */
+    transform: rotateX(-30deg); /* Tilt the cube for a better 3D view */
+    animation: animate 5s linear infinite; /* Rotating animation */
+} 
+
+/* Changing the cube faces color when clicked */
+.cube:active div span {
+  background: linear-gradient(#252424, #EF6C00); /* Orange gradient on active */
+} 
+
+/* Defining the rotating animation */
+@keyframes animate {
+    0% {
+        transform: rotateX(-30deg) rotateY(0deg); /* Initial position */
+    }
+    100% {
+        transform: rotateX(-30deg) rotateY(360deg); /* Full rotation */
+    }
+} 
+
+/* Cube sides container */
+.cube div {
+    position: absolute; /* Positioned relative to the cube */
+    left: 0;
+    width: 100%; /* Full width of the cube */
+    height: 100%; /* Full height of the cube */
+    transform-style: preserve-3d; /* Preserve 3D transformations */
+} 
+
+/* Cube faces (4 sides) */
+.cube div span {
+    position: absolute; /* Positioned relative to the sides container */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width of the cube side */
+    height: 100%; /* Full height of the cube side */
+    background: linear-gradient(#252424, #01579B); /* Blue gradient background */
+    transform: rotateY(calc(90deg * var(--i))) translateZ(75px); 
+    /* Rotate each face 90 degrees and move it outward to form the cube */
+} 
+
+/* Top face of the cube */
+.top {
+    position: absolute; /* Positioned relative to the cube */
+    top: 0;
+    left: 0;
+    width: 150px; /* Matches cube width */
+    height: 150px; /* Matches cube height */
+    background: #222; /* Dark gray background */
+    transform: rotateX(90deg) translateZ(75px); 
+    /* Rotate to form the top face and move outward */
+}
